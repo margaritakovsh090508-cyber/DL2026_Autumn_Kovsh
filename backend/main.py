@@ -11,7 +11,10 @@ from typing import List
 from database import Base, engine, get_db
 from models import Meme
 from schemas import MemeCreate, MemeOut, WeatherResponse, ForecastResponse, ForecastDay
-from weather_service import fetch_weather, fetch_forecast, determine_category
+from weather_service import (
+    fetch_weather, fetch_forecast, determine_category,
+    WeatherNotConfiguredError,
+)
 import seed_data
 
 # Создаём таблицы и заполняем БД при старте
