@@ -1,38 +1,43 @@
 # 🌦️ Погода с настроением (мемы под прогноз)
 
-Приложение показывает текущую погоду в любом городе и подбирает
-забавный мем под погодные условия. Можно добавить свой мем и
-поделиться открыткой с друзьями.
+Приложение показывает текущую погоду и прогноз на 5 дней в любом городе
+и подбирает забавный мем под погодные условия. Можно лайкать мемы,
+делиться открыткой и добавлять свои мемы.
+
+## Возможности
+
+- 🌡️ Текущая погода в любом городе (температура, описание, иконка)
+- 😂 Мем, подобранный под погоду
+- 📅 Прогноз на 5 дней — на каждый день свой мем
+- ❤️ Лайки мемов
+- 📤 Кнопка «Поделиться» (Web Share API + fallback в буфер обмена)
+- ➕ Форма добавления нового мема
+- 🖼️ Локальные мемы-картинки (без зависимости от внешних хостингов)
 
 ## Стек
 
 - **Backend:** Python 3.10+, FastAPI, SQLAlchemy, SQLite, httpx
-- **Frontend:** React 18, Vite
-- **Внешний API:** OpenWeatherMap (опционально)
+- **Frontend:** React 18 + TypeScript, Vite
+- **Внешний API:** OpenWeatherMap
+
+## Документация
+
+- 📐 [Проектирование и анализ](docs/design.md) — Часть 1
+- 🤖 [Рефлексия об использовании AI](docs/AI_REFLECTION.md) — Часть 3
 
 ## Требования
 
-- Python 3.10+
+- Python 3.10+ (протестировано на 3.13)
 - Node.js 18+
-- (опционально) API-ключ OpenWeatherMap
+- API-ключ OpenWeatherMap (обязателен)
 
-## Запуск бэкенда
+## Настройка API-ключа OpenWeatherMap
+
+Приложение **требует** ключ для запросов погоды.
+
+1. Зарегистрируйтесь на https://openweathermap.org/api
+2. Скопируйте ключ из раздела **My API keys**
+3. Создайте файл `backend/.env` на основе `backend/.env.example`:
 
 ```bash
-cd backend
-python -m venv venv
-
-# Linux/macOS:
-source venv/bin/activate
-# Windows:
-venv\Scripts\activate
-
-pip install -r requirements.txt
-
-# (опционально) ключ для реальной погоды:
-# Linux/macOS:
-export OPENWEATHER_API_KEY=ваш_ключ
-# Windows (PowerShell):
-# $env:OPENWEATHER_API_KEY="ваш_ключ"
-
-uvicorn main:app --reload --port 8000
+cp backend/.env.example backend/.env
